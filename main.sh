@@ -77,6 +77,7 @@ install(){
     cd ~
     PLAIN "下载Acme.sh"
     curl https://get.acme.sh | sh
+    alias acme.sh=~/.acme.sh/acme.sh
      if [[ -n $(acme.sh -v 2>/dev/null) ]]; then
         green "Acme脚本安装成功"
     else
