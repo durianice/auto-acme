@@ -93,7 +93,7 @@ install(){
     yellow "默认服务商为letsencrypt"
     ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
     
-    read -rp "请输入二级域名(example.com): " domain
+    read -rp "请输入域名: " domain
     if [[ $(echo ${domain:0-2}) =~ cf|ga|gq|ml|tk ]]; then
         red "Freenom域名请使用其他模式"
         back2menu
