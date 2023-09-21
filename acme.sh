@@ -116,10 +116,11 @@ install(){
         bash ~/.acme.sh/acme.sh --issue --dns dns_cf -d "*.${domain}" -d "${domain}" -k ec-256 --insecure
     fi
     {
-        mkdir /root/cert
-        chmod -R 755 /root/cert
-        bash ~/.acme.sh/acme.sh --install-cert -d "*.${domain}" --key-file /root/cert/private.key --fullchain-file /root/cert/cert.crt --ecc
-        green "证书申请成功，保存路径：/root/cert/"
+        cert_dir="cert_$domain"
+        mkdir "/root/${cert_dir}"
+        chmod -R 755 "/root/${cert_dir}"
+        bash ~/.acme.sh/acme.sh --install-cert -d "*.${domain}" --key-file "/root/${cert_dir}/private.key" --fullchain-file "/root/${cert_dir}/cert.crt" --ecc
+        green "证书申请成功，保存路径：/root/${cert_dir}"
     } || {
         red "证书生成失败"
     }
